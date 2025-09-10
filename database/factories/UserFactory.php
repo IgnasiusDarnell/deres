@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Models\Role;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -29,7 +30,7 @@ class UserFactory extends Factory
             'full_name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'phone' => fake()->phoneNumber(),
-            'role_id' => \App\Models\Role::factory(),
+            'role_id' => Role::inRandomOrder()->first()->id,
         ];
     }
 
